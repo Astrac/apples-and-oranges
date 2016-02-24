@@ -16,9 +16,10 @@ object Main extends App {
   val cart = Cart(Iterator
     .iterate(StdIn.readLine("-> "))(_ => StdIn.readLine("-> "))
     .takeWhile(_ != "")
+    .map(_.toLowerCase())
     .flatMap {
-      case "Apple" => Some(Apple)
-      case "Orange" => Some(Orange)
+      case "apple" => Some(Apple)
+      case "orange" => Some(Orange)
       case invalid => println(s"Invalid input: $invalid"); None
     }
     .toSeq)
