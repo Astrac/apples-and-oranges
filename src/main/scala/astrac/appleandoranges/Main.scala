@@ -4,12 +4,12 @@ import scala.io.StdIn
 
 object Main extends App {
 
-  val priceMap = Map[Item, Price](
-    Apple -> Price(60),
-    Orange -> Price(25)
+  val priceMap = Map[Item, Money](
+    Apple -> Money(60),
+    Orange -> Money(25)
   )
 
-  val config = CheckoutConfig(priceMap.apply _)
+  val config = CheckoutConfig(priceMap.apply, DiscountFunctions.combined(_, priceMap.apply))
 
   println("""Enter "Apple" or "Orange" once per line; an empty line will calculate the total price""")
 
